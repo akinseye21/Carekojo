@@ -78,7 +78,13 @@ public class LoginPage extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (Patterns.EMAIL_ADDRESS.matcher(email.getText().toString().trim()).matches()){
+//                if (Patterns.EMAIL_ADDRESS.matcher(email.getText().toString().trim()).matches()){
+//                    emailBool = true;
+//                }else{
+//                    email.setError("Wrong input");
+//                    emailBool = false;
+//                }
+                if (email.getText().toString().length() > 1){
                     emailBool = true;
                 }else{
                     email.setError("Wrong input");
@@ -159,7 +165,7 @@ public class LoginPage extends AppCompatActivity {
     private void loginFunction() {
         progresslogin.setVisibility(View.VISIBLE);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, "https://api.carekojo.e4eweb.space/api/login/",
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, "https://api.carekojo.e4eweb.space/auth/login/",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
